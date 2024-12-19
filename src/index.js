@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import { piadas } from "./mock.js";
 import { connectToMongo } from "./database/index.js";
-import User from "./database/schema/User.js";
 import { userRouter } from "./router.js";
 
 const app = express();
