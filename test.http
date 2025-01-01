@@ -16,11 +16,19 @@ content-type: application/json
 
 {
     "email": "jcmcf2@gmail.com",
-    "password": "admin12345"
+    "password": "admin1234"
 }
 
 
 ###
-
 http://localhost:3000/user/fetch
 
+
+###
+POST https://backend-jokes.vercel.app/user/auth
+content-type: application/json
+
+{
+    "email": "jcmcf2@gmail.com",
+    "password": "admin1234"
+}

@@ -28,7 +28,7 @@ const authService = async (body) => {
     return { error: true, message: "Dados inválidos", statusCode: 400 };
   }
 
-  return user;
+  return { user, message: "Login bem sucedido" };
 };
 
 export { fetchService, createService, authService };
