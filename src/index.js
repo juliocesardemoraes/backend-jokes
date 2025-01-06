@@ -1,16 +1,19 @@
 import express from "express";
 import cors from "cors";
 import { piadas } from "./mock.js";
+import { connectToMongo } from "./database/index.js";
+import { userRouter } from "./router.js";
 
 const app = express();
+connectToMongo();
 app.use(
   cors({
-    exposeHeaders: ["X-Total-Count"],
+    exposedHeaders: ["X-Total-Count"],
   })
 );
 app.use(express.json());
 
-function getRandomIt(max) {
+function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
@@ -19,9 +22,11 @@ app.get("/batata", (request, response) => {
 });
 
 app.get("/piadas", (request, response) => {
-  const randomNum = getRandomIt(piadas.length);
+  const randomNum = getRandomInt(piadas.length);
   return response.status(200).send({ piada: piadas[randomNum] });
 });
+
+app.use("/user", userRouter);
 
 app.listen("3000");
 
